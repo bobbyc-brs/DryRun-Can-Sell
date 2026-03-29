@@ -58,12 +58,36 @@ Invest in a **heavier** matrix earlier if the domain becomes regulated or formal
 
 ---
 
+## ADR-003 — Licensing (GPL-3.0-or-later, Brighter Sight Inc.)
+
+**Status:** Accepted (2026-03-29)
+
+### Context
+
+We need a clear **open-source** license and **attribution** for Can-sell, with a **contact** path for the copyright holder.
+
+### Decision
+
+- License: **[GNU General Public License v3.0 or later](https://www.gnu.org/licenses/gpl-3.0.html)** (`GPL-3.0-or-later`).
+- Copyright: **Brighter Sight Inc.** Contact: **[info@BrighterSight.ca](mailto:info@BrighterSight.ca)**.
+- Full license text: [LICENSE](./LICENSE); short notice: [NOTICE](./NOTICE).
+- **npm** `author` / `license` fields set in workspace `package.json` files.
+- **Source** files (TypeScript, JavaScript, CSS, Prisma schema, HTML) include **SPDX** (`GPL-3.0-or-later`) and copyright where practical.
+
+### Consequences
+
+- Recipients who **distribute** modified versions must comply with GPL obligations (source offer, license copy, etc.—see LICENSE).
+- **Third-party** npm packages remain under their own licenses; the lockfile and upstream notices govern those components.
+
+---
+
 ## Index
 
 | ADR | Title |
 |-----|--------|
 | ADR-001 | Traceability vs. building the application first |
 | ADR-002 | Initial application shape (monorepo: web + API) |
+| ADR-003 | Licensing (GPL-3.0-or-later, Brighter Sight Inc.) |
 
 ---
 
@@ -71,3 +95,4 @@ Invest in a **heavier** matrix earlier if the domain becomes regulated or formal
 
 - [traceability.md](./traceability.md) — living map referenced in ADR-001.
 - [dependencies.md](./dependencies.md) — packages, versions, and why (kept current with the lockfile).
+- [LICENSE](./LICENSE), [NOTICE](./NOTICE) — legal text and project copyright (ADR-003).

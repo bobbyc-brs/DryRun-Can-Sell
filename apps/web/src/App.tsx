@@ -1,11 +1,23 @@
+// Copyright (C) 2026 Brighter Sight Inc. <info@BrighterSight.ca>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 import { useEffect, useState } from 'react'
 import './App.css'
 
 type Health = { ok: boolean; service?: string }
 
+type VersionInfo = {
+  name: string
+  version: string
+  license: string
+  copyright: string
+  contact: string
+}
+
 export default function App() {
   const [health, setHealth] = useState<Health | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [version, setVersion] = useState<VersionInfo | null>(null)
 
   useEffect(() => {
     let cancelled = false
@@ -25,6 +37,21 @@ export default function App() {
           setHealth(null)
           setError(e instanceof Error ? e.message : 'Request failed')
         }
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  useEffect(() => {
+    let cancelled = false
+    fetch('/api/version')
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+      .then((data: VersionInfo) => {
+        if (!cancelled) setVersion(data)
+      })
+      .catch(() => {
+        if (!cancelled) setVersion(null)
       })
     return () => {
       cancelled = true
@@ -57,6 +84,20 @@ export default function App() {
           </p>
         )}
       </section>
+
+      <footer className="footer">
+        {version && (
+          <p className="footer-meta">
+            API <code>{version.version}</code> · {version.license}
+          </p>
+        )}
+        <p className="footer-meta">
+          {version?.copyright ?? 'Copyright (C) 2026 Brighter Sight Inc.'} ·{' '}
+          <a href={`mailto:${version?.contact ?? 'info@BrighterSight.ca'}`}>
+            {version?.contact ?? 'info@BrighterSight.ca'}
+          </a>
+        </p>
+      </footer>
     </div>
   )
 }

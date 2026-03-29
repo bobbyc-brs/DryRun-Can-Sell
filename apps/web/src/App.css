@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2026 Brighter Sight Inc. <info@BrighterSight.ca>
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
 .shell {
   padding: 2rem 1.25rem 3rem;
   max-width: 36rem;
@@ -52,4 +57,25 @@
   .status-error {
     color: #fbbf24;
   }
+}
+
+.footer {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.footer-meta {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: var(--text);
+  opacity: 0.9;
+}
+
+.footer-meta a {
+  color: inherit;
+}
+
+.footer-meta code {
+  font-size: 0.85em;
 }

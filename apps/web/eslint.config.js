@@ -1,3 +1,6 @@
+// Copyright (C) 2026 Brighter Sight Inc. <info@BrighterSight.ca>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'

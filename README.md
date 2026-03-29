@@ -2,6 +2,12 @@
 
 Marketplace for timed auctions and listings (see [Vision.md](./Vision.md)).
 
+## License
+
+Copyright (C) 2026 [Brighter Sight Inc.](mailto:info@BrighterSight.ca)
+
+This program is free software: you can redistribute it and/or modify it under the terms of the **GNU General Public License** as published by the Free Software Foundation, either **version 3** of the License, or (at your option) any later version. See [LICENSE](./LICENSE) and [NOTICE](./NOTICE).
+
 ## Development
 
 **Requirements:** Node.js 20+, npm 10+. PostgreSQL is required when you run Prisma migrations against a real database.

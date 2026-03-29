@@ -2,6 +2,8 @@
   "name": "web",
   "private": true,
   "version": "0.0.0",
+  "author": "Brighter Sight Inc. <info@BrighterSight.ca>",
+  "license": "GPL-3.0-or-later",
   "type": "module",
   "scripts": {
     "dev": "vite",

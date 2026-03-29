@@ -1,3 +1,6 @@
+// Copyright (C) 2026 Brighter Sight Inc. <info@BrighterSight.ca>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -7,10 +10,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-/// Placeholder for Phase 0 — replace/extend with full domain model.
 model User {
   id        String   @id @default(cuid())
   email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  sales     Sale[]
+}
+
+/// A seller-run auction event (catalog and scheduling to be expanded).
+model Sale {
+  id        String   @id @default(cuid())
+  title     String
+  sellerId  String
+  seller    User     @relation(fields: [sellerId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
