@@ -19,8 +19,10 @@ npm run dev
 
 This runs:
 
-- **Web** — Vite dev server (default [http://localhost:5173](http://localhost:5173)), proxying `/api` to the API.
-- **API** — Fastify on [http://127.0.0.1:3001](http://127.0.0.1:3001).
+- **Web** — Vite dev server on **`26` + day-of-month (DD) + `0`** (e.g. March 29 → [http://localhost:26290](http://localhost:26290)), proxying `/api` to the API.
+- **API** — Fastify on **`26` + DD + `1`** (e.g. March 29 → [http://127.0.0.1:26291](http://127.0.0.1:26291)).
+
+Ports change with the calendar day so local runs are less likely to clash with other tools. Override with **`VITE_PORT`** / **`VITE_API_PORT`** (web) and **`PORT`** (API) in the environment if needed.
 
 ### Database (Prisma)
 
@@ -45,7 +47,7 @@ The API process does not require PostgreSQL to start; Prisma is used when you ad
 
 **`tsx` / API dev: “The package \"@esbuild/linux-x64\" could not be found”** (or similar for your OS): the API dev script uses **`tsx`**, which relies on **esbuild** platform binaries shipped as optional dependencies. Do **not** install with `npm install --omit=optional`. If it still happens, run `npm install` again from the repo root (root **`esbuild`** in `package.json` helps npm lay out `@esbuild/*` correctly). On Linux you can confirm with `ls node_modules/@esbuild/`.
 
-**`EADDRINUSE` on port 3001:** another process is using the API port. Stop the old dev server or run `fuser -k 3001/tcp` (Linux), then `npm run dev` again.
+**`EADDRINUSE`:** another process is using the web or API dev port (see the **`26` + DD + `0` / `1`** scheme above). Stop the old dev server or free the port (e.g. `fuser -k 26291/tcp` on Linux when the API fails to bind), then `npm run dev` again.
 
 ## Documentation
 

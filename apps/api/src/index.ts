@@ -4,6 +4,12 @@
 import Fastify from "fastify";
 import { readApiPackage } from "./version-info.js";
 
+/** Dev default: `26` + DD + `1`. Override with PORT. */
+function defaultApiDevPort(date = new Date()) {
+  const dd = String(date.getDate()).padStart(2, "0");
+  return Number.parseInt(`26${dd}1`, 10);
+}
+
 const app = Fastify({ logger: true });
 
 const pkg = readApiPackage();
@@ -23,7 +29,7 @@ app.get("/api/version", async () => ({
   contact: "info@BrighterSight.ca",
 }));
 
-const port = Number(process.env.PORT ?? 3001);
+const port = Number(process.env.PORT ?? defaultApiDevPort());
 const host = process.env.HOST ?? "0.0.0.0";
 
 try {

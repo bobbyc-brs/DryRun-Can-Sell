@@ -81,6 +81,29 @@ We need a clear **open-source** license and **attribution** for Can-sell, with a
 
 ---
 
+## ADR-004 — Dev server ports (`26` + calendar day + slot)
+
+**Status:** Accepted (2026-03-29)
+
+### Context
+
+Fixed ports (e.g. 5173 / 3001) often collide with other local services.
+
+### Decision
+
+- In **development**, default ports follow **`26` + two-digit calendar day (DD) + one digit (slot)**:
+  - **Slot 0** — web (Vite).
+  - **Slot 1** — API (Fastify).
+- Example: the **29th** of the month → **26290** (web), **26291** (API).
+- Override with **`VITE_PORT`**, **`VITE_API_PORT`** (proxy target in Vite), and **`PORT`** (API) when needed.
+
+### Consequences
+
+- Ports **change daily**; bookmarks and integrations should use env overrides for stable values.
+- Additional slots (**`26` + DD + `2`…`9`**) are reserved for future dev processes if we extend the scheme.
+
+---
+
 ## Index
 
 | ADR | Title |
@@ -88,6 +111,7 @@ We need a clear **open-source** license and **attribution** for Can-sell, with a
 | ADR-001 | Traceability vs. building the application first |
 | ADR-002 | Initial application shape (monorepo: web + API) |
 | ADR-003 | Licensing (GPL-3.0-or-later, Brighter Sight Inc.) |
+| ADR-004 | Dev server ports (`26` + calendar day + slot) |
 
 ---
 
