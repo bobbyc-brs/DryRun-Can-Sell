@@ -1,0 +1,43 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+
+# Dependencies and builds
+node_modules/
+dist/
+build/
+.next/
+out/
+*.egg-info/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS and editors
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Logs and caches
+*.log
+.cache/
+.turbo/
+
+# Test / coverage
+coverage/
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Mobile (when added)
+*.jks
+*.keystore
+android/.gradle/
+android/app/build/
+ios/Pods/
