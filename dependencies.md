@@ -7,14 +7,6 @@
 
 ---
 
-## What is Prisma?
-
-**Prisma** is a database toolkit for Node.js and TypeScript. You describe tables and relations in a declarative [`schema.prisma`](./apps/api/prisma/schema.prisma) file; the **`prisma`** CLI turns that into **SQL migrations** and generates **`@prisma/client`**, a **type-safe** query builder so application code talks to PostgreSQL (or other supported databases) with autocomplete and fewer raw-SQL mistakes. It is often described as an **ORM** (object–relational mapping) layer, though Prisma’s docs emphasize the schema-first workflow and migrations.
-
-**Learn more:** [Prisma documentation](https://www.prisma.io/docs).
-
----
-
 ## Runtime and platform
 
 | Package | Installed (approx.) | Where | Why |
