@@ -91,15 +91,21 @@ Fixed ports (e.g. 5173 / 3001) often collide with other local services.
 
 ### Decision
 
-- In **development**, default ports follow **`26` + two-digit calendar day (DD) + one digit (slot)**:
+- In **development**, default ports follow **`26` + DD + slot**, where **DD** is the two-digit **day of month** (01–31) and **slot** is a single digit:
   - **Slot 0** — web (Vite).
   - **Slot 1** — API (Fastify).
 - Example: the **29th** of the month → **26290** (web), **26291** (API).
 - Override with **`VITE_PORT`**, **`VITE_API_PORT`** (proxy target in Vite), and **`PORT`** (API) when needed.
 
+### Day-of-month only (not full MMDD)
+
+- The middle digits are **DD** (01–31), **not** month+day (**MMDD**). Encoding **MMDD** (e.g. March 9 → `0309`) would produce values such as **`2603090`**, which are **not valid TCP ports** (max **65535**) unless we shorten or hash the date differently.
+- Using **DD** keeps ports in a predictable band (roughly **26010**–**26319** for slots 0–1) and matches the intended examples (**26290** / **26291** on the 29th).
+- The **month is not** in the port number; only the **day of the current month** matters. Two different months with the same calendar day (e.g. Jan 29 and Mar 29) reuse the same default ports—acceptable for local dev; use **env overrides** if that collision matters.
+
 ### Consequences
 
-- Ports **change daily**; bookmarks and integrations should use env overrides for stable values.
+- Ports **change with the day of the month** (not uniquely per calendar date); bookmarks and integrations should use env overrides for stable values.
 - Additional slots (**`26` + DD + `2`…`9`**) are reserved for future dev processes if we extend the scheme.
 
 ---
