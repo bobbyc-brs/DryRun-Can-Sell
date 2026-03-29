@@ -1,0 +1,55 @@
+.shell {
+  padding: 2rem 1.25rem 3rem;
+  max-width: 36rem;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.header h1 {
+  margin: 0 0 0.35rem;
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+}
+
+.tagline {
+  margin: 0;
+  color: var(--text);
+  opacity: 0.92;
+}
+
+.panel {
+  margin-top: 2rem;
+  padding: 1.25rem 1.25rem 1.35rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--code-bg);
+}
+
+.panel h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.status {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.status-pending {
+  color: var(--text);
+}
+
+.status-ok {
+  color: var(--text-h);
+}
+
+.status-error {
+  color: #b45309;
+}
+
+@media (prefers-color-scheme: dark) {
+  .status-error {
+    color: #fbbf24;
+  }
+}
