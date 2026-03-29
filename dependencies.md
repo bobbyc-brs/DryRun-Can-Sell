@@ -7,6 +7,14 @@
 
 ---
 
+## What is Prisma?
+
+**Prisma** is a database toolkit for Node.js and TypeScript. You describe tables and relations in a declarative [`schema.prisma`](./apps/api/prisma/schema.prisma) file; the **`prisma`** CLI turns that into **SQL migrations** and generates **`@prisma/client`**, a **type-safe** query builder so application code talks to PostgreSQL (or other supported databases) with autocomplete and fewer raw-SQL mistakes. It is often described as an **ORM** (object–relational mapping) layer, though Prisma’s docs emphasize the schema-first workflow and migrations.
+
+**Learn more:** [Prisma documentation](https://www.prisma.io/docs).
+
+---
+
 ## Runtime and platform
 
 | Package | Installed (approx.) | Where | Why |
@@ -78,3 +86,25 @@ Update the **Installed** column and the date in the header.
 
 - [design-decisions.md](./design-decisions.md) — ADR-002 (monorepo shape).
 - [implementation-plan.md](./implementation-plan.md) — phased technical work.
+
+---
+
+## Official reference URLs
+
+Use these for upstream docs, tutorials, and API references. (If a link breaks, search the project name; vendors move pages occasionally.)
+
+| Tool | Primary documentation |
+|------|------------------------|
+| **Node.js** | [https://nodejs.org/en/docs](https://nodejs.org/en/docs) |
+| **npm** (workspaces, CLI) | [https://docs.npmjs.com/](https://docs.npmjs.com/) |
+| **PostgreSQL** | [https://www.postgresql.org/docs/](https://www.postgresql.org/docs/) |
+| **concurrently** | [https://github.com/open-cli-tools/concurrently](https://github.com/open-cli-tools/concurrently) |
+| **React** | [https://react.dev/](https://react.dev/) |
+| **Vite** | [https://vite.dev/](https://vite.dev/) |
+| **@vitejs/plugin-react** | [https://github.com/vitejs/vite-plugin-react](https://github.com/vitejs/vite-plugin-react) |
+| **TypeScript** | [https://www.typescriptlang.org/docs/](https://www.typescriptlang.org/docs/) |
+| **ESLint** | [https://eslint.org/docs/latest/](https://eslint.org/docs/latest/) |
+| **typescript-eslint** | [https://typescript-eslint.io/](https://typescript-eslint.io/) |
+| **Fastify** | [https://fastify.dev/](https://fastify.dev/) |
+| **Prisma** | [https://www.prisma.io/docs](https://www.prisma.io/docs) |
+| **tsx** | [https://tsx.is/](https://tsx.is/) |
