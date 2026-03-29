@@ -1,0 +1,72 @@
+# Design decisions log
+
+Records **why** we chose an approach, not only **what** we built. New decisions append as **ADR-00x**; superseded entries stay for history with a **Status** line.
+
+---
+
+## ADR-001 — Traceability vs. building the application first
+
+**Status:** Accepted (2026-03-29)
+
+### Context
+
+We have requirement IDs (`FR-*`, `NFR-*`) in [requirements.md](./requirements.md) and coverage intent in [test-plan.md](./test-plan.md). We needed to decide whether to produce a full **traceability matrix** (requirements × design × code × tests) before writing code.
+
+### Decision
+
+1. **Start the application** (Phase 0 / thin vertical slices) **before** investing in a complete traceability matrix.
+2. Keep traceability **light and living** from the first commits:
+   - Continue using **FR-*** / **NFR-*** in requirements and test plans.
+   - In automated tests (and tickets), **reference requirement IDs** in names, descriptions, or metadata.
+   - Maintain a **single living artifact** (e.g. [traceability.md](./traceability.md) or a small table) that we **append to** as features land—not a one-time exhaustive grid before “hello world.”
+
+### Consequences
+
+- **Positive:** Faster feedback, less rework when the first API and UI exist; matrix rows attach to real tests and modules.
+- **Negative:** Full audit-style coverage is **not** complete on day one; acceptable unless compliance mandates a full matrix upfront.
+
+### Notes
+
+Invest in a **heavier** matrix earlier if the domain becomes regulated or formal QA/audit requires it.
+
+---
+
+## ADR-002 — Initial application shape (monorepo: web + API)
+
+**Status:** Accepted (2026-03-29)
+
+### Context
+
+[implementation-plan.md](./implementation-plan.md) calls for a **web-only** client, **API-first** backend, and **PostgreSQL**. We need a repo layout for Phase 0.
+
+### Decision
+
+- **Monorepo** with npm workspaces:
+  - **`apps/web`** — React, TypeScript, Vite (responsive SPA foundation).
+  - **`apps/api`** — Node.js, Fastify, TypeScript; **Prisma** for schema/migrations toward PostgreSQL.
+- **Environment:** `DATABASE_URL` in `.env` (see `.env.example`); local dev may use Docker Postgres or a hosted DB.
+
+### Consequences
+
+- **Positive:** Clear separation matches “API-first”; web and API version together; Prisma gives typed DB access.
+- **Negative:** Two processes in dev (served via root `npm run dev` with `concurrently`); teams must keep API contracts stable.
+
+### Alternatives considered
+
+- **Next.js only** (API routes + UI): faster single deploy, but less separation for a strict API-first mental model—we may revisit for production hosting.
+- **pnpm** workspaces: slightly nicer DX; we started with **npm** workspaces for ubiquity.
+
+---
+
+## Index
+
+| ADR | Title |
+|-----|--------|
+| ADR-001 | Traceability vs. building the application first |
+| ADR-002 | Initial application shape (monorepo: web + API) |
+
+---
+
+## Related files
+
+- [traceability.md](./traceability.md) — living map referenced in ADR-001.
