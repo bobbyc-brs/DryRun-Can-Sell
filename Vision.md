@@ -2,7 +2,7 @@
 
 ## Executive summary
 
-**Can-sell** is a multi-channel marketplace for sellers to photograph items, build a structured catalog (up to **255 items** per sale), and run **time-limited auctions** with buyer discovery and bidding flows comparable to established online auction experiences (e.g., eBay-style bidding). The product leans on **AI-assisted identification and copy** to reduce friction for sellers and to produce clearer, more inviting listings. Delivery surfaces: **web first**, **Android**, with **Apple** planned.
+**Can-sell** is a marketplace for sellers to photograph items, build a structured catalog (up to **255 items** per sale), and run **time-limited auctions** with buyer discovery and bidding flows comparable to established online auction experiences (e.g., eBay-style bidding). The product leans on **AI to identify items and draft copy** to reduce friction and to produce clearer, more inviting listings. **Delivery is a web application only for now**, including on phones and tablets: a **responsive web app** that can use **device capabilities** such as the **camera** and **GPS / geolocation** where the browser and permissions allow (e.g., local discovery, pickup context). Native iOS/Android apps are **not** in the current scope unless plans change.
 
 This document grounds the vision in how **MaxSold** and adjacent platforms operate, then states what we aim to build and how we intend to differentiate.
 
@@ -45,7 +45,7 @@ These illustrate alternative positioning; none is a blueprint, but each informs 
 
 1. **Listing is slow and uneven** — Photos alone are not enough; weak titles and descriptions reduce bids.
 2. **Discovery is hard for one-off sellers** — Without marketing and browseable inventory, auctions underperform.
-3. **Auction mechanics are intimidating** — Reserve prices, bid increments, pickup windows, and payments must be **clear and consistent** across web and mobile.
+3. **Auction mechanics are intimidating** — Reserve prices, bid increments, pickup windows, and payments must be **clear and consistent** on desktop and mobile browsers.
 
 ---
 
@@ -55,19 +55,25 @@ These illustrate alternative positioning; none is a blueprint, but each informs 
 
 ### Pillars
 
-1. **Capture** — Mobile-first photography workflows (Android first; iOS later), with web support for batch review and editing.
-2. **Understand (AI)** — Assist with **item recognition**, **attributes** (brand, era, category), and **inviting, accurate descriptions**; human review before publish remains central to trust.
+1. **Capture** — **Web-based** listing flows that work well on **phone and desktop**: camera access via the browser, upload and batch review, and optional **GPS / location** for buyer-facing locality (e.g., distance to item, region-scoped discovery) where users grant permission.
+2. **Understand (AI)** — Use AI to **identify what the item is** (category, likely brand or era, notable attributes) and to draft **inviting, accurate descriptions**; sellers review and correct before publish. AI is **assistive**, not authoritative for condition or authenticity.
 3. **Catalog** — Structured inventory per sale, **hard cap of 255 items**, support for **single-item listings** and **grouped lots** where product rules allow.
 4. **Reach** — Tools and channels to **advertise sales** to buyers (SEO, shareable links, notifications, and optional paid promotion—exact mix TBD).
 5. **Transact** — **Auction** with eBay-like familiarity: timed end, bid increments, optional proxy/max bids, anti-sniping extensions (policy TBD), clear **winner obligations** and **pickup/shipping** rules.
+
+### Signature experiences (differentiators)
+
+| Feature | Intent |
+|---------|--------|
+| **Banana for scale** | Sellers can **include a standard reference object** (e.g., a banana) in photos so the system (and buyers) can **estimate real-world dimensions** from the image—reducing “how big is it?” uncertainty. Calibration UX, disclaimers, and edge cases (lighting, angle) are product decisions. |
+| **How will this look in my room** | Buyers can **visualize an item in their space** (e.g., AR placement via **WebXR** where supported, or **upload-a-room-photo** compositing as a fallback) to increase confidence before bidding. |
+| **Similar sales** | Surfaces **other items that sold at the same price** (or comparable realized prices), helping **sellers price** and **buyers benchmark** fairness—depends on sufficient closed-auction data and clear matching rules (category, condition, locale). |
 
 ### Platform scope
 
 | Surface | Intent |
 |---------|--------|
-| **Web** | Full seller and buyer journeys; catalog review; admin and support views. |
-| **Android** | Primary capture device for sellers; buyer bidding and notifications. |
-| **Apple (iOS)** | Parity with Android after core flows stabilize on web + Android. |
+| **Web app (only, for now)** | Full seller and buyer journeys on **desktop and mobile browsers**; progressive enhancement for **camera**, **geolocation**, and (where viable) **in-room / AR** views. **Native** Android or iOS apps are out of scope until explicitly replanned. |
 
 ---
 
@@ -85,18 +91,22 @@ These illustrate alternative positioning; none is a blueprint, but each informs 
 
 | Area | Direction |
 |------|-----------|
-| **AI-assisted listing** | Stronger default titles/descriptions and structured attributes vs. manual-only competitors. |
+| **AI-assisted identification and listing** | Identify items and populate attributes plus copy; seller confirms before publish. |
 | **Bounded catalog size** | **255 items** keeps sales **focused** and may simplify operations, search, and support. |
-| **Modern multi-platform** | Web + native mobile from the roadmap, not as an afterthought. |
+| **Web-first, capability-rich** | One web codebase; **phone camera**, **GPS**, and **room visualization** where browsers allow—no native app requirement for v1. |
+| **Banana for scale & room preview** | Tangible **size context** and **placement confidence** that many auction listings lack. |
+| **Similar sales at a price** | Transparency for **buyers and sellers** via comparable **realized** prices. |
 | **Transparent auction rules** | Borrow proven patterns (e.g., eBay-like bidding) while tailoring pickup/settlement to physical goods. |
 
 ---
 
 ## Out of scope (for early vision — subject to change)
 
+- **Native** iOS and Android **store apps** (use the **mobile web** app instead).
 - Full **white-label auctioneer ERP** (a la some BidStream-style stacks) unless we explicitly pivot B2B.
 - **Unlimited** inventory per sale (we standardize on **≤255**).
 - **Guaranteed** AI accuracy — AI is **assistive**; sellers confirm details before publish.
+- **Perfect** dimension or AR fidelity — **Banana for scale** and **room view** are **estimates** and previews; copy and legal disclaimers should set expectations.
 
 ---
 
