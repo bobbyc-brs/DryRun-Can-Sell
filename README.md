@@ -44,4 +44,5 @@ The API process does not require PostgreSQL to start; Prisma is used when you ad
 | [test-plan.md](./test-plan.md) | Test strategy |
 | [implementation-plan.md](./implementation-plan.md) | Phased delivery |
 | [design-decisions.md](./design-decisions.md) | Architecture and process ADRs |
+| [dependencies.md](./dependencies.md) | Packages, locked versions, rationale |
 | [traceability.md](./traceability.md) | Living requirement ↔ test map |

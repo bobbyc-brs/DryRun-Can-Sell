@@ -70,3 +70,4 @@ Invest in a **heavier** matrix earlier if the domain becomes regulated or formal
 ## Related files
 
 - [traceability.md](./traceability.md) — living map referenced in ADR-001.
+- [dependencies.md](./dependencies.md) — packages, versions, and why (kept current with the lockfile).
