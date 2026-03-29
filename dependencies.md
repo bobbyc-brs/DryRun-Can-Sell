@@ -21,6 +21,7 @@
 | Package | Installed | Why |
 |---------|-----------|-----|
 | **concurrently** `^9.1.2` → **9.2.1** | dev | Run **web + API** with one `npm run dev` and labeled output ([design-decisions.md](./design-decisions.md) ADR-002). |
+| **esbuild** `^0.27.4` | dev | Declared at the **root** so optional **`@esbuild/*`** platform packages install reliably; **`tsx`** (API dev) and **Vite** depend on esbuild transforms. See [README](./README.md) troubleshooting if `@esbuild/linux-x64` (or your OS) is missing. |
 
 ---
 
@@ -99,4 +100,5 @@ Use these for upstream docs, tutorials, and API references. (If a link breaks, s
 | **typescript-eslint** | [https://typescript-eslint.io/](https://typescript-eslint.io/) |
 | **Fastify** | [https://fastify.dev/](https://fastify.dev/) |
 | **Prisma** | [https://www.prisma.io/docs](https://www.prisma.io/docs) |
+| **esbuild** | [https://esbuild.github.io/](https://esbuild.github.io/) |
 | **tsx** | [https://tsx.is/](https://tsx.is/) |

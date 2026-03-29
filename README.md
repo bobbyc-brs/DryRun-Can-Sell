@@ -41,6 +41,12 @@ The API process does not require PostgreSQL to start; Prisma is used when you ad
 | `npm run build` | Production build for both apps |
 | `npm run lint -w web` | ESLint (web) |
 
+### Troubleshooting
+
+**`tsx` / API dev: “The package \"@esbuild/linux-x64\" could not be found”** (or similar for your OS): the API dev script uses **`tsx`**, which relies on **esbuild** platform binaries shipped as optional dependencies. Do **not** install with `npm install --omit=optional`. If it still happens, run `npm install` again from the repo root (root **`esbuild`** in `package.json` helps npm lay out `@esbuild/*` correctly). On Linux you can confirm with `ls node_modules/@esbuild/`.
+
+**`EADDRINUSE` on port 3001:** another process is using the API port. Stop the old dev server or run `fuser -k 3001/tcp` (Linux), then `npm run dev` again.
+
 ## Documentation
 
 | File | Purpose |
