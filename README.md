@@ -41,7 +41,12 @@ The API process does not require PostgreSQL to start; Prisma is used when you ad
 |--------|-------------|
 | `npm run dev` | Web + API concurrently |
 | `npm run build` | Production build for both apps |
+| `npm run test` | API unit/smoke tests (Vitest) |
 | `npm run lint -w web` | ESLint (web) |
+
+### Contributing and Git workflow
+
+Use **feature branches + pull requests** into `main` for substantive work (see [CONTRIBUTING.md](./CONTRIBUTING.md)). **Code and schema docs:** [apps/api/README.md](./apps/api/README.md), [apps/web/README.md](./apps/web/README.md), Prisma `///` comments in [apps/api/prisma/schema.prisma](./apps/api/prisma/schema.prisma). **Requirement ↔ test map:** [traceability.md](./traceability.md).
 
 ### Troubleshooting
 
@@ -60,3 +65,4 @@ The API process does not require PostgreSQL to start; Prisma is used when you ad
 | [design-decisions.md](./design-decisions.md) | Architecture and process ADRs |
 | [dependencies.md](./dependencies.md) | Packages, locked versions, rationale |
 | [traceability.md](./traceability.md) | Living requirement ↔ test map |
+| [CONTRIBUTING.md](./CONTRIBUTING.md) | PR workflow, checks before merge |

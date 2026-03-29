@@ -10,21 +10,34 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+/// Account that can own sales (buyer role will use the same or a separate model later).
+/// @see requirements.md FR-001 (identity), FR-003 (seller owns only their data)
 model User {
-  id           String   @id @default(cuid())
-  email        String   @unique
+  /// Opaque primary key (cuid).
+  id String @id @default(cuid())
+
+  /// Login identifier; unique across the system.
+  email String @unique
+
+  /// One-way password secret (e.g. bcrypt); never returned by the API.
   passwordHash String
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  sales        Sale[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  sales Sale[]
 }
 
-/// A seller-run auction event (catalog and scheduling to be expanded).
+/// Seller-run auction event. Items/lots, schedule, and bids are not modeled yet.
+/// @see requirements.md FR-010 (create sale), FR-011 (≤255 items — enforced in API later)
 model Sale {
-  id        String   @id @default(cuid())
-  title     String
-  sellerId  String
-  seller    User     @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  id    String @id @default(cuid())
+  title String
+
+  /// Foreign key to [User] who created the sale.
+  sellerId String
+  seller   User   @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
