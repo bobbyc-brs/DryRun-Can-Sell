@@ -50,6 +50,7 @@
 | **tsx** `^4.20.5` → **4.21.0** | dev | Run TypeScript in dev with **`tsx watch`** without a separate compile step. |
 | **typescript** `~5.9.3` → **5.9.3** | dev | Same language version as web for shared types later if needed. |
 | **@types/node** `^22.16.5` | dev | Node typings for Fastify and `process.env`. |
+| **vitest** `^3.2.4` | dev | API unit/smoke tests (`npm run test -w api`); see [ADR-005](./design-decisions.md). |
 
 **Why Fastify:** Small surface area for Phase 0; easy to add plugins (auth, multipart uploads, rate limits) later.
 
@@ -68,7 +69,7 @@ The lockfile pulls in **Babel** (via Vite/React), **undici-types**, ESLint plugi
 After `npm update` or changing `package.json`:
 
 ```bash
-npm ls concurrently vite react react-dom fastify @prisma/client prisma typescript eslint tsx --all
+npm ls concurrently vite react react-dom fastify @prisma/client prisma typescript eslint tsx vitest --all
 ```
 
 Update the **Installed** column and the date in the header.
@@ -102,3 +103,4 @@ Use these for upstream docs, tutorials, and API references. (If a link breaks, s
 | **Prisma** | [https://www.prisma.io/docs](https://www.prisma.io/docs) |
 | **esbuild** | [https://esbuild.github.io/](https://esbuild.github.io/) |
 | **tsx** | [https://tsx.is/](https://tsx.is/) |
+| **Vitest** | [https://vitest.dev/](https://vitest.dev/) |

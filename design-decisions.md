@@ -110,6 +110,29 @@ Fixed ports (e.g. 5173 / 3001) often collide with other local services.
 
 ---
 
+## ADR-005 — In-repo docs, smoke tests, and pull requests
+
+**Status:** Accepted (2026-03-29)
+
+### Context
+
+We need to **understand** evolving code and schema without spelunking only, and to **verify** behavior incrementally. We also want **`main`** to stay a sane integration line as the team grows.
+
+### Decision
+
+1. **API** — Expose a **`buildApp()`** factory (`app.ts`) so routes are testable without binding a TCP port; **`index.ts`** only listens.
+2. **Documentation** — Per-app READMEs (`apps/api`, `apps/web`), JSDoc on `buildApp` and public routes, and **`///` field comments** on Prisma models.
+3. **Tests** — **Vitest** in `apps/api`; first tests are **smoke** checks for `/api/health` and `/api/version`, named **`NFR-006-xx`** to match [test-plan.md](./test-plan.md).
+4. **Traceability** — Maintain [traceability.md](./traceability.md) as features land.
+5. **Git** — Prefer **feature branches + PRs** into `main`; document in [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+### Consequences
+
+- Slightly more files (`app.ts` vs a single `index.ts`) in exchange for **fast, DB-free** API tests.
+- PR discipline is **policy** until branch protection is enabled on the host.
+
+---
+
 ## Index
 
 | ADR | Title |
@@ -118,6 +141,7 @@ Fixed ports (e.g. 5173 / 3001) often collide with other local services.
 | ADR-002 | Initial application shape (monorepo: web + API) |
 | ADR-003 | Licensing (GPL-3.0-or-later, Brighter Sight Inc.) |
 | ADR-004 | Dev server ports (`26` + calendar day + slot) |
+| ADR-005 | In-repo docs, smoke tests, and pull requests |
 
 ---
 
@@ -126,3 +150,4 @@ Fixed ports (e.g. 5173 / 3001) often collide with other local services.
 - [traceability.md](./traceability.md) — living map referenced in ADR-001.
 - [dependencies.md](./dependencies.md) — packages, versions, and why (kept current with the lockfile).
 - [LICENSE](./LICENSE), [NOTICE](./NOTICE) — legal text and project copyright (ADR-003).
+- [CONTRIBUTING.md](./CONTRIBUTING.md) — PR workflow (ADR-005).
