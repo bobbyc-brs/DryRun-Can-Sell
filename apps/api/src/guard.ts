@@ -4,6 +4,14 @@
 import "@fastify/jwt";
 import type { FastifyReply, FastifyRequest } from "fastify";
 
+export type JwtPayload = { sub: string; email: string };
+
+declare module "@fastify/jwt" {
+  interface FastifyJWT {
+    payload: JwtPayload;
+  }
+}
+
 /**
  * Route pre-handler: returns 401 if JWT is missing or invalid.
  * @see requirements.md FR-002 (mutations require session), FR-003 (authorization on resources)
@@ -18,8 +26,6 @@ export async function requireAuth(
     await reply.code(401).send({ error: "Unauthorized" });
   }
 }
-
-export type JwtPayload = { sub: string; email: string };
 
 /** Reads `sub` from verified JWT payload (must run after `jwtVerify`). */
 export function getUserId(request: FastifyRequest): string {

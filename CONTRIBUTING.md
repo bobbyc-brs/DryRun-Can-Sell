@@ -11,7 +11,7 @@ For anything beyond trivial doc typos, use **short-lived branches** and **pull r
 3. Open a **PR** on GitHub; describe *what* changed and *why*.
 4. Prefer **squash merge** or **merge commit** per team taste; keep history readable.
 
-**Why:** `main` stays releasable, changes get a review trail, and CI (when added) can gate merges.
+**Why:** `main` stays releasable, changes get a review trail, and **CI** (GitHub Actions on push/PR to `main`, see [`.github/workflows/ci.yml`](./.github/workflows/ci.yml)) runs **`npm run verify`** against a PostgreSQL service.
 
 Direct pushes to `main` are OK for **solo** hotfixes if you accept the risk; as soon as more than one person touches the repo—or you care about audit—default to PRs.
 
@@ -22,7 +22,7 @@ npm install
 npm run verify
 ```
 
-`verify` runs **`build`** (web + api), **`test`** (Vitest), and **`lint`** (web ESLint)—same as the **pre-push** hook.
+`verify` runs **`build`** (web + api), **`test`** (Vitest), and **`lint`** (web ESLint)—same as the **pre-push** hook. **`DATABASE_URL`** must point at a migrated PostgreSQL instance for **FR-001** API auth tests (see [tests/README.md](./tests/README.md)); CI provides Postgres automatically.
 
 ## Git hooks (Husky)
 

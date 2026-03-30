@@ -19,6 +19,8 @@ Configuration: root [`vitest.config.ts`](../vitest.config.ts). Imports use alias
 
 Name tests with **`FR-xxx`** / **`NFR-xxx`** prefixes when they map to [requirements.md](../requirements.md); update [traceability.md](../traceability.md).
 
+**API auth tests** ([`tests/api/unit/auth.test.ts`](../tests/api/unit/auth.test.ts)) need a **reachable PostgreSQL** database: set **`DATABASE_URL`** in `apps/api/.env` (see [`apps/api/.env.example`](../apps/api/.env.example)) and apply migrations (`npm run db:migrate -w api` or `db:deploy`). Vitest defaults `DATABASE_URL` to the example URL if unset; without a running server those tests fail with connection errors.
+
 ### Layout
 
 ```text

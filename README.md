@@ -33,7 +33,11 @@ npm run db:push -w api
 # or: npm run db:migrate -w api
 ```
 
-The API process does not require PostgreSQL to start; Prisma is used when you add routes that query the database.
+The API loads **`JWT_SECRET`** (and **`DATABASE_URL`**) from `apps/api/.env` for auth routes. PostgreSQL must be running with migrations applied for **register/login** and for **API tests** that hit the database.
+
+### Continuous integration
+
+On **push** and **pull requests** to **`main`**, [GitHub Actions](.github/workflows/ci.yml) starts **PostgreSQL**, runs **`prisma migrate deploy`** for the API, then **`npm run verify`** (same as local pre-push).
 
 ### Workspace commands
 

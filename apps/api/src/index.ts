@@ -1,7 +1,13 @@
 // Copyright (C) 2026 Brighter Sight Inc. <info@BrighterSight.ca>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+import { config } from "dotenv";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { buildApp } from "./app.js";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+config({ path: path.join(__dirname, "../.env") });
 
 /** Dev default: `26` + DD + `1`. Override with PORT. */
 function defaultApiDevPort(date = new Date()) {

@@ -46,12 +46,15 @@
 | Package | Installed | Why |
 |---------|-----------|-----|
 | **fastify** `^5.6.0` → **5.8.4** | deps | Lightweight HTTP server, schema-friendly, good performance for JSON APIs. |
+| **@fastify/jwt** | deps | JWT sign/verify for **FR-001** auth routes (`guard.ts`, `/api/auth/*`). |
+| **bcryptjs** | deps | Password hashing for `User.passwordHash`. |
+| **dotenv** | deps | Load `apps/api/.env` in `src/index.ts` before `buildApp()`. |
 | **@prisma/client** `^6.19.0` → **6.19.2** | deps | Type-safe DB access generated from [schema](./apps/api/prisma/schema.prisma). |
 | **prisma** `^6.19.0` → **6.19.2** | dev | Migrations, `db push`, `prisma generate` in CI/dev. |
 | **tsx** `^4.20.5` → **4.21.0** | dev | Run TypeScript in dev with **`tsx watch`** without a separate compile step. |
 | **typescript** `~5.9.3` → **5.9.3** | dev | Same language version as web for shared types later if needed. |
 | **@types/node** `^22.16.5` | dev | Node typings for Fastify and `process.env`. |
-| **vitest** `^3.2.4` | dev (root) | All packages: run `npm test` — suites under [`tests/`](./tests/README.md); see [ADR-005](./design-decisions.md). |
+| **vitest** `^3.2.4` | dev (root) | All packages: run `npm test` — suites under [`tests/`](./tests/README.md); see [ADR-005](./design-decisions.md) (PR workflow). |
 
 **Why Fastify:** Small surface area for Phase 0; easy to add plugins (auth, multipart uploads, rate limits) later.
 
