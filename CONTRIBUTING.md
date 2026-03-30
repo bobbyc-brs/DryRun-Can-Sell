@@ -19,10 +19,22 @@ Direct pushes to `main` are OK for **solo** hotfixes if you accept the risk; as 
 
 ```bash
 npm install
-npm run build
-npm test
-npm run lint -w web
+npm run verify
 ```
+
+`verify` runs **`build`** (web + api), **`test`** (Vitest), and **`lint`** (web ESLint)—same as the **pre-push** hook.
+
+## Git hooks (Husky)
+
+After **`npm install`** (runs the `prepare` script), [Husky](https://typicode.github.io/husky/) sets `core.hooksPath` to `.husky/_` and runs hooks defined beside it (e.g. [`.husky/pre-push`](./.husky/pre-push)).
+
+| Hook | What runs | Why |
+|------|-----------|-----|
+| **`pre-push`** | `npm run verify` | Stops broken builds, failing tests, or lint errors from reaching GitHub. |
+
+**Skip when you must** (emergency push, WIP branch): `git push --no-verify`, or `HUSKY=0 git push`. Use sparingly.
+
+**Optional later:** add **`pre-commit`** with [lint-staged](https://github.com/lint-staged/lint-staged) to ESLint/format only staged files—faster feedback than waiting for push. The pre-push hook stays the **full** gate.
 
 Add API tests when you add routes; name them with **`FR-xxx`** or **`NFR-xxx`** prefixes where they map to [requirements.md](./requirements.md).
 

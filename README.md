@@ -44,6 +44,7 @@ The API process does not require PostgreSQL to start; Prisma is used when you ad
 | `npm test` | All Vitest suites under [`tests/`](./tests/README.md) |
 | `npm run test:watch` | Vitest watch mode |
 | `npm run lint -w web` | ESLint (web) |
+| `npm run verify` | Build + test + lint (also runs on **`git push`** via Husky) |
 
 ### Contributing and Git workflow
 
