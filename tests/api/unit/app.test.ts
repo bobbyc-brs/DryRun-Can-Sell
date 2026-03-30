@@ -6,9 +6,9 @@
  * Naming: `NFR-006-*` maps to traceability.md.
  */
 
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import type { FastifyInstance } from "fastify";
-import { buildApp } from "./app.js";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { buildApp } from "@api/app";
 
 describe("NFR-006 API health and version (smoke)", () => {
   let app: FastifyInstance;

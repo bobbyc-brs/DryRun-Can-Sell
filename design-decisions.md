@@ -122,7 +122,7 @@ We need to **understand** evolving code and schema without spelunking only, and 
 
 1. **API** — Expose a **`buildApp()`** factory (`app.ts`) so routes are testable without binding a TCP port; **`index.ts`** only listens.
 2. **Documentation** — Per-app READMEs (`apps/api`, `apps/web`), JSDoc on `buildApp` and public routes, and **`///` field comments** on Prisma models.
-3. **Tests** — **Vitest** in `apps/api`; first tests are **smoke** checks for `/api/health` and `/api/version`, named **`NFR-006-xx`** to match [test-plan.md](./test-plan.md).
+3. **Tests** — **Vitest** at the **repo root**; suites under [`tests/`](./tests/README.md) (`api/unit`, `web/unit`, `web/components`). Smoke checks for `/api/health` and `/api/version` (**`NFR-006-xx`**) plus web helpers and `App`.
 4. **Traceability** — Maintain [traceability.md](./traceability.md) as features land.
 5. **Git** — Prefer **feature branches + PRs** into `main`; document in [CONTRIBUTING.md](./CONTRIBUTING.md).
 
