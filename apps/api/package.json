@@ -12,9 +12,7 @@
     "postinstall": "prisma generate",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
-    "db:push": "prisma db push",
-    "test": "vitest run",
-    "test:watch": "vitest"
+    "db:push": "prisma db push"
   },
   "dependencies": {
     "@fastify/jwt": "^10.0.0",
@@ -27,7 +25,6 @@
     "@types/node": "^22.16.5",
     "prisma": "^6.19.0",
     "tsx": "^4.20.5",
-    "typescript": "~5.9.3",
-    "vitest": "^3.2.4"
+    "typescript": "~5.9.3"
   }
 }

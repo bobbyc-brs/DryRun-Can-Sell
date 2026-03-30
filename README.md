@@ -41,7 +41,8 @@ The API process does not require PostgreSQL to start; Prisma is used when you ad
 |--------|-------------|
 | `npm run dev` | Web + API concurrently |
 | `npm run build` | Production build for both apps |
-| `npm run test` | API unit/smoke tests (Vitest) |
+| `npm test` | All Vitest suites under [`tests/`](./tests/README.md) |
+| `npm run test:watch` | Vitest watch mode |
 | `npm run lint -w web` | ESLint (web) |
 
 ### Contributing and Git workflow
@@ -53,6 +54,8 @@ Use **feature branches + pull requests** into `main` for substantive work (see [
 **`tsx` / API dev: “The package \"@esbuild/linux-x64\" could not be found”** (or similar for your OS): the API dev script uses **`tsx`**, which relies on **esbuild** platform binaries shipped as optional dependencies. Do **not** install with `npm install --omit=optional`. If it still happens, run `npm install` again from the repo root (root **`esbuild`** in `package.json` helps npm lay out `@esbuild/*` correctly). On Linux you can confirm with `ls node_modules/@esbuild/`.
 
 **`EADDRINUSE`:** another process is using the web or API dev port (see the **`26` + DD + `0` / `1`** scheme above). Stop the old dev server or free the port (e.g. `fuser -k 26291/tcp` on Linux when the API fails to bind), then `npm run dev` again.
+
+**`npm test` / `vite build` / native bindings (`@rolldown/…`, `lightningcss.…node`):** do not use `npm install --omit=optional`. If a platform binary is missing, run `npm install` again from the repo root; root `package.json` may pin Linux helpers for CI/dev consistency.
 
 ## Documentation
 
@@ -67,3 +70,4 @@ Use **feature branches + pull requests** into `main` for substantive work (see [
 | [dependencies.md](./dependencies.md) | Packages, locked versions, rationale |
 | [traceability.md](./traceability.md) | Living requirement ↔ test map |
 | [CONTRIBUTING.md](./CONTRIBUTING.md) | PR workflow, checks before merge |
+| [tests/README.md](./tests/README.md) | Test folder layout (`api/`, `web/`) |

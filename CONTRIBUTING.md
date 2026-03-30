@@ -20,7 +20,7 @@ Direct pushes to `main` are OK for **solo** hotfixes if you accept the risk; as 
 ```bash
 npm install
 npm run build
-npm run test -w api
+npm test
 npm run lint -w web
 ```
 

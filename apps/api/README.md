@@ -28,11 +28,9 @@ Protected seller/buyer routes (**FR-001+**) are not registered yet.
 ```bash
 npm run dev -w api          # tsx watch
 npm run build -w api        # compile to dist/
-npm run test -w api         # Vitest (no DB required for current tests)
 npm run db:migrate -w api   # needs DATABASE_URL
 ```
 
 ## Tests
 
-- **`src/app.test.ts`** — injects requests into `buildApp({ logger: false })`.
-- Test names use **`NFR-006-xx`** to align with [test-plan.md](../../test-plan.md) and [traceability.md](../../traceability.md).
+API tests live under the repo [`tests/api/unit/`](../../tests/api/unit/) (Vitest from the monorepo root: `npm test`). **`NFR-006-xx`** cases inject into `buildApp({ logger: false })` — see [tests/README.md](../../tests/README.md).

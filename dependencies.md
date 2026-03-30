@@ -50,7 +50,7 @@
 | **tsx** `^4.20.5` → **4.21.0** | dev | Run TypeScript in dev with **`tsx watch`** without a separate compile step. |
 | **typescript** `~5.9.3` → **5.9.3** | dev | Same language version as web for shared types later if needed. |
 | **@types/node** `^22.16.5` | dev | Node typings for Fastify and `process.env`. |
-| **vitest** `^3.2.4` | dev | API unit/smoke tests (`npm run test -w api`); see [ADR-005](./design-decisions.md). |
+| **vitest** `^3.2.4` | dev (root) | All packages: run `npm test` — suites under [`tests/`](./tests/README.md); see [ADR-005](./design-decisions.md). |
 
 **Why Fastify:** Small surface area for Phase 0; easy to add plugins (auth, multipart uploads, rate limits) later.
 

@@ -2,17 +2,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 import { useEffect, useState } from 'react'
+import {
+  describeFetchError,
+  type Health,
+  type VersionInfo,
+} from './lib/health'
 import './App.css'
-
-type Health = { ok: boolean; service?: string }
-
-type VersionInfo = {
-  name: string
-  version: string
-  license: string
-  copyright: string
-  contact: string
-}
 
 export default function App() {
   const [health, setHealth] = useState<Health | null>(null)
@@ -35,7 +30,7 @@ export default function App() {
       .catch((e: unknown) => {
         if (!cancelled) {
           setHealth(null)
-          setError(e instanceof Error ? e.message : 'Request failed')
+          setError(describeFetchError(e))
         }
       })
     return () => {
