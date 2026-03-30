@@ -62,6 +62,7 @@ Use **feature branches + pull requests** into `main` for substantive work (see [
 | [requirements.md](./requirements.md) | Requirements (`FR-*`, `NFR-*`) |
 | [test-plan.md](./test-plan.md) | Test strategy |
 | [implementation-plan.md](./implementation-plan.md) | Phased delivery |
+| [HLD.md](./HLD.md) | High-level design (Mermaid: context, classes, sequences) |
 | [design-decisions.md](./design-decisions.md) | Architecture and process ADRs |
 | [dependencies.md](./dependencies.md) | Packages, locked versions, rationale |
 | [traceability.md](./traceability.md) | Living requirement ↔ test map |
